@@ -59,7 +59,7 @@ class Server:
 			except Exception as e:
 				print("ERROR: Failed to acquire sockets for ports ", user_port, " and 8280")
 				print("Try running the Server in a privileged user mode.")
-				self.shutdonw()
+				self.shutdown()
 				import sys
 				sys.exit(1)
 		print ("Server successfully acquired the socket with port:", self.port)
@@ -169,7 +169,7 @@ class Server:
 
 				conndb = pymysql.connect(host=self.databaseHost, port=self.databasePort, user=self.user, passwd=self.password, db=self.database)
 				cur = conndb.cursor()
-				cur.execute("select * from client where id=%s and password=%s", (username,password))
+				cur.execute("select distinct * from client where id=%s and password=%s", (username,password))
 				data = cur.fetchall()
 				print("data: ", data)
 
@@ -198,11 +198,12 @@ class Server:
 				location = file_requested.split('?')[0]
 				item = file_requested.split('?')[1]
 
-				
-				# DEFAULT_TERM = item
-				# DEFAULT_LOCATION = location
-				
-
+				conndb = pymysql.connect(host=self.databaseHost, port=self.databasePort, user=self.user, passwd=self.password, db=self.database)
+				cur = conndb.cursor()
+				cur.execute("insert incident values(%s,%s,%s,curdate())",(username,location,item))
+				cur.close()
+				conndb.commit()
+				conndb.close()
 
 				parser = argparse.ArgumentParser()
 
@@ -212,13 +213,7 @@ class Server:
 
 				input_values = parser.parse_args()
 
-				print (input_values.location)
-
 				result = query_api(input_values.term,input_values.location)
-
-				print (type(result))
-
-				pprint.pprint(result)
 
 				if result!=None and result!=[]:
 					string = '['
@@ -227,7 +222,6 @@ class Server:
 						length = len(categories)
 						string += '{"categories":"'
 						for j in range(length):
-							pprint.pprint(categories[j][0])
 							string += categories[j][0] + ", "
 							if j==length-1:
 								string = string[:-2]
@@ -246,8 +240,6 @@ class Server:
 							string += ']'
 				else:
 					string = '{"name":"failure"}'
-				
-				print (string)
 
 				response_headers = self._gen_headers( 200)
 				server_response = response_headers.encode()
@@ -267,9 +259,6 @@ class Server:
 
 def query_api(item, location):
 	response = search(item, location)
-
-	pprint.pprint(response)
-
 
 	businesses = response.get('businesses')
 
@@ -295,7 +284,6 @@ def search(item, location):
 		'location': location.replace('%20', '+'),
 		'limit': SEARCH_LIMIT
 	}
-	#pprint.pprint(url_params)
 	return request(API_HOST, SEARCH_PATH, url_params=url_params)
 
 def get_business(business_id):
