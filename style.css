@@ -3,22 +3,17 @@ body {
 	padding: 0;
 	font-family: "Comic Sans MS", cursive, sans-serif;
 	font-size: 12px;
-	color: #464646;
-}
-
-/* Header */
-#head-wrapper {
-
+	color: #000000;
 }
 
 /* Page */
 
 #page {
+	padding-top: 1px;
 	overflow: auto;
-	background: #F3F2ED url(images/body-bg.png) repeat;
 	width: 80%;
 	margin: 0px auto;
-	background: #FFFFFF;
+	/*background: #FFFFFF url(images/body-bg.png) repeat;*/
 }
 
 /* LOGO */
@@ -34,7 +29,6 @@ body {
 #logo h1 {
 	font-size: 40px;
 	text-transform: capitalize;
-	padding-bottom: 40px;
 	font-weight: normal;
 	color: #FFFFFF;
 }
@@ -53,22 +47,34 @@ body {
 
 /* Login */
 
-#id01, #id02, #id03, #id04 {
-	padding-top: 15px;
-	padding-left: 4px;
+#id01{
+	text-align: center;
+	text-transform: uppercase;
+	font-size: 14px;
+	color: #000000;
+	padding-left: 5px;
 	float: left;
-	width: 97%;
+	width: 95%;
 	min-height: 25px;
 }
 
-#id05  {
+#id02, #id03, #id04 {
+	text-align: center;
 	padding-top: 15px;
 	padding-left: 4px;
 	float: left;
-	width: 100%;
+	width: 95%;
+	min-height: 25px;
+}
+
+#id05 {
+	text-align: center;
+	padding-top: 15px;
+	padding-left: 4px;
+	float: left;
+	width: 95%;
 	min-height: 25px;
 	padding-bottom: 25px;
-	border-bottom: 1px solid #E0E0E0;
 }
 
 #input1, #input2, #location, #item {
@@ -109,8 +115,8 @@ body {
 }
 
 #previous  {
-	width: 126px;
-	height: 26px;
+	min-width: 126px;
+	min-height: 26px;
 	margin-left: auto;
 	margin-right: auto;
 	background: url(images/previous.png) no-repeat left top;
@@ -123,7 +129,6 @@ body {
 #place01, #place02, #place03, #place04, #place05, #place06, #place07, #place08 {
 	float: left;
 	width: 100%;
-	border-bottom: 1px solid #E0E0E0;
 }
 
 #map-google {
@@ -131,7 +136,6 @@ body {
 	padding-bottom: 20px;
 	float: left;
 	width: 100%;
-	border-bottom: 1px solid #E0E0E0;
 }
 
 /* Catagory */
@@ -144,7 +148,6 @@ body {
 	color: #888888;
 	padding-left: 30px;
 	margin-left: 2px;
-	padding-top: 5px;
 }
 
 /* Name */
@@ -264,22 +267,14 @@ body {
 /* Footer */
 
 #footer {
-	width: 90%;
+	overflow: auto;
+	font-family: Georgia, serif;
+	width: 100%;
 	min-height: 100px;
 	margin: 0 auto;
-	padding: 0;
-}
-
-#footer-bgcontent {
-}
-
-#footer p {
-	margin: 0;
-	padding: 30px 0px 0px 0px;
+	padding-top: 15%;
 	text-align: center;
+	color: #666666;
 	line-height: normal;
 	font-size: 12px;
-}
-
-#footer a {
 }
