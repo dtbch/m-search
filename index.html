@@ -8,8 +8,6 @@
 		
 	</head>
 	<body>
-	<div id="header-wrapper">
-	</div>
 	<!-- end #header -->
 	<!-- end #header-wrapper -->
 	<div id="logo">
@@ -188,7 +186,7 @@
 											
 						var text = xhttp.responseText;	
 
-						//document.getElementById("id01").innerHTML=text;
+						// document.getElementById("id01").innerHTML=text;
 
 						
 						obj = JSON.parse(text);
@@ -196,9 +194,9 @@
 
 						var length = Object.keys(obj).length;
 						
-						//document.getElementById("id02").innerHTML=length;
+						// document.getElementById("id02").innerHTML=length;
 
-						if(length==1){
+						if(length<8){
 							document.getElementById("id01").innerHTML = "No result! Please check your location or item!";
 							document.getElementById("id02").innerHTML = null;
 							document.getElementById("id03").innerHTML = null;
@@ -210,6 +208,25 @@
 						// document.getElementById("id03").innerHTML=null;
 						// document.getElementById("id04").innerHTML=null;
 						else{
+
+							// $("#place01 .name01").show();
+							// $("#place02 .name02").show();
+							// $("#place03 .name03").show();
+							// $("#place04 .name04").show();
+							// $("#place05 .name05").show();
+							// $("#place06 .name06").show();
+							// $("#place07 .name07").show();
+							// $("#place08 .name08").show();
+
+							// $("#place01 .categories").show();
+							// $("#place02 .categories").show();
+							// $("#place03 .categories").show();
+							// $("#place04 .categories").show();
+							// $("#place05 .categories").show();
+							// $("#place06 .categories").show();
+							// $("#place07 .categories").show();
+							// $("#place08 .categories").show();
+
 							document.getElementById("place01").getElementsByClassName("name01")[0].innerHTML=obj[0].name;
 							document.getElementById("place01").getElementsByClassName("categories")[0].innerHTML="categories: " + obj[0].categories + "<br/>" + "address: " + obj[0].address;
 							document.getElementById("place02").getElementsByClassName("name02")[0].innerHTML=obj[1].name;
@@ -481,5 +498,6 @@
         
 		</script>
 		</div>
+		<div id="footer">Copyright © 2015 Tao Dong & Kangran Miao. All rights reserved.</div>
 	</body>
 </html>
