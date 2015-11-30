@@ -31,7 +31,7 @@ TOKEN_SECRET = 'wvkIJFlGr1VbFBaN1vBtFmTgPJM'
 class Server:
 
 	def __init__(self,port = 8180):
-		self.host = '172.16.11.99'
+		self.host = '127.0.0.1'
 		self.databaseHost ='localhost'
 		self.port = port
 		self.databasePort = 3306
@@ -215,6 +215,8 @@ class Server:
 
 				result = query_api(input_values.term,input_values.location)
 
+				pprint.pprint(result)
+
 				if result!=None and result!=[]:
 					string = '['
 					for i in range(len(result)):
@@ -227,6 +229,7 @@ class Server:
 								string = string[:-2]
 								string += '"'
 						location = result[i].get('location')
+						address = location.get('address')[0]
 						coordinate = location.get('coordinate')
 						latitude = coordinate.get('latitude')
 						longitude = coordinate.get('longitude')
@@ -234,7 +237,7 @@ class Server:
 						latitude = str(latitude)
 						longitude = str(longitude)
 						name = str(name)
-						string += ',"name":"' + name +'", "latitude":"'+ latitude + '", "longitude":"' + longitude + '"},'
+						string += ',"name":"' + name +'", "address":"' + address + '", "latitude":"'+ latitude + '", "longitude":"' + longitude + '"},'
 						if(i==len(result)-1):
 							string = string[:-1]
 							string += ']'
