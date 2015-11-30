@@ -1,60 +1,45 @@
 body {
 	margin: 0px;
 	padding: 0;
-	background: #F3F2ED url(images/bg.jpg) repeat-x left top;
 	font-family: "Comic Sans MS", cursive, sans-serif;
 	font-size: 12px;
 	color: #464646;
 }
 
 /* Header */
+#head-wrapper {
 
-#header-wrapper {
-	height: 0px;
-	background: #F3F2ED;
 }
-
 
 /* Page */
 
 #page {
-	background: #F3F2ED;
-	width: 1000px;
+	overflow: auto;
+	background: #F3F2ED url(images/body-bg.png) repeat;
+	width: 80%;
 	margin: 0px auto;
-	background: #FFFFFF url(images/img06.jpg) repeat-y left 20px;
-}
-
-#page-bgtop {
-	background: #F3F2ED;
-	width: 920px;
-	height: 2000px;
-	margin: 0px auto;
-	padding: 0px 40px 0px 40px;
-	background: url(images/img05.jpg) no-repeat left top;
+	background: #FFFFFF;
 }
 
 /* LOGO */
 
 #logo {
-	width: 920px;
-	height: 100px;
-	margin: 0 auto;
-	padding: 10px 20px 0px 40px;
-	background: url(images/img08.jpg) no-repeat left bottom;
+	width: 100%;
+	min-height: 100px;
+	padding-top: 1%;
+	text-align: center;
+	background: #84D155 url(images/img08.jpg) no-repeat center bottom;
 }
 
 #logo h1 {
-	margin-top: -4px;
 	font-size: 40px;
-	margin: 0px;
-	line-height: normal;
 	text-transform: capitalize;
+	padding-bottom: 40px;
 	font-weight: normal;
 	color: #FFFFFF;
 }
 
 #logo p {
-	margin-top: -4px;
 	text-transform: capitalize;
 	font-family: "Comic Sans MS", cursive, sans-serif;
 	font-size: 13px;
@@ -68,241 +53,219 @@ body {
 
 /* Login */
 
-#id01 {
+#id01, #id02, #id03, #id04 {
 	padding-top: 15px;
+	padding-left: 4px;
 	float: left;
-	width: 460px;
-	height: 25px;
-}
-
-
-#id02 {
-	padding-top: 15px;
-	float: left;
-	width: 460px;
-	height: 25px;
-}
-
-#id03 {
-	padding-left: 0px;
-	padding-top: 15px;
-	float: left;
-	width: 460px;
-	height: 25px;
-	padding-bottom: 25px;
-	border-bottom: 1px solid #E0E0E0;
-}
-
-#id04  {
-	padding-top: 15px;
-	float: left;
-	width: 230px;
-	height: 25px;
-	padding-bottom: 25px;
-	border-bottom: 1px solid #E0E0E0;
+	width: 97%;
+	min-height: 25px;
 }
 
 #id05  {
 	padding-top: 15px;
+	padding-left: 4px;
 	float: left;
-	width: 230px;
-	height: 25px;
+	width: 100%;
+	min-height: 25px;
 	padding-bottom: 25px;
 	border-bottom: 1px solid #E0E0E0;
 }
 
 #input1, #input2, #location, #item {
-	width: 393px;
-	height: 20px;
-	padding: 6px 0 0 7px;
-	border: none;
-	background: url(images/input.png) no-repeat left top;
+	width: 100%;
+	min-height: 25px;
+	padding: 2px 0 0 8px;
+	border: 2px solid #DADADA;
+	border-radius: 15px;
 	color: #000000;
 }
 
 #login {
-	width: 84px;
-	height: 26px;
+	min-width: 84px;
+	min-height: 26px;
 	margin-left: 0px;
-	padding: 0px 5px;
 	background: url(images/signin.png) no-repeat left top;
 	border: none;
-	text-indent: -9999px;
-	color: #FFFFFF;
+	color: transparent;
 }
 
 #signup {
-	width: 84px;
-	height: 26px;
+	min-width: 84px;
+	min-height: 26px;
 	margin-left: 0px;
-	padding: 0px 5px;
 	background: url(images/signup.png) no-repeat left top;
 	border: none;
-	text-indent: -9999px;
-	color: #FFFFFF;
+	color: transparent;
 }
 
 #searchYelp {
-	width: 126px;
-	height: 26px;
-	margin-left: 0px;
-	padding: 0px 5px;
+	min-width: 126px;
+	min-height: 26px;
+	margin-left: auto;
+	margin-right: auto;
 	background: url(images/search.png) no-repeat left top;
 	border: none;
-	text-indent: -9999px;
-	color: #FFFFFF;
+	color: transparent;
 }
 
 #previous  {
 	width: 126px;
 	height: 26px;
-	margin-left: 0px;
-	padding: 0px 5px;
+	margin-left: auto;
+	margin-right: auto;
 	background: url(images/previous.png) no-repeat left top;
 	border: none;
-	text-indent: -9999px;
-	color: #FFFFFF;
+	color: transparent;
 }
 
 /* Content */
 
 #place01, #place02, #place03, #place04, #place05, #place06, #place07, #place08 {
 	float: left;
-	width: 920px;
+	width: 100%;
+	border-bottom: 1px solid #E0E0E0;
 }
 
 #map-google {
 	padding-top: 20px;
 	padding-bottom: 20px;
 	float: left;
-	width: 920px;
+	width: 100%;
 	border-bottom: 1px solid #E0E0E0;
 }
 
 /* Catagory */
 
 .categories {
+	width: 100%;
 	margin-top: 0;
 	text-align: justify;
-	border-bottom: 1px solid #E0E0E0;
 	font-size: 14px;
 	color: #888888;
 	padding-left: 30px;
 	margin-left: 2px;
+	padding-top: 5px;
 }
 
 /* Name */
 
 .name01 {
 	font-family: "Comic Sans MS", cursive, sans-serif;
-	margin-top: 0;
 	margin-left: 2px;
 	font-weight: normal;
 	font-size: 18px;
-	color: #66665E;
+	color: #84D155;
 	text-align: justify;
 	height: 28px;
-	background: url(images/red-dot.png) no-repeat left 3px;
+	background: url(images/red-dot.png) no-repeat left 7px;
 	padding-left: 30px;
+	padding-top: 5px;
+	padding-bottom: 5px;
 }
 
 .name02 {
 	font-family: "Comic Sans MS", cursive, sans-serif;
-	margin-top: 0;
 	margin-left: 2px;
 	font-weight: normal;
 	font-size: 18px;
-	color: #66665E;
+	color: #84D155;
 	text-align: justify;
 	height: 28px;
-	background: url(images/orange-dot.png) no-repeat left 3px;
+	background: url(images/orange-dot.png) no-repeat left 7px;
 	padding-left: 30px;
+	padding-top: 5px;
+	padding-bottom: 5px;
 }
 
 .name03 {
 	font-family: "Comic Sans MS", cursive, sans-serif;
-	margin-top: 0;
 	margin-left: 2px;
 	font-weight: normal;
 	font-size: 18px;
-	color: #66665E;
+	color: #84D155;
 	text-align: justify;
 	height: 28px;
-	background: url(images/yellow-dot.png) no-repeat left 3px;
+	background: url(images/yellow-dot.png) no-repeat left 7px;
 	padding-left: 30px;
+	padding-top: 5px;
+	padding-bottom: 5px;
 }
 
 .name04 {
 	font-family: "Comic Sans MS", cursive, sans-serif;
-	margin-top: 0;
 	margin-left: 2px;
 	font-weight: normal;
 	font-size: 18px;
-	color: #66665E;
+	color: #84D155;
 	text-align: justify;
 	height: 28px;
-	background: url(images/green-dot.png) no-repeat left 3px;
+	background: url(images/green-dot.png) no-repeat left 7px;
 	padding-left: 30px;
+	padding-top: 5px;
+	padding-bottom: 5px;
 }
 
 .name05 {
 	font-family: "Comic Sans MS", cursive, sans-serif;
-	margin-top: 0;
 	margin-left: 2px;
 	font-weight: normal;
 	font-size: 18px;
-	color: #66665E;
+	color: #84D155;
 	text-align: justify;
 	height: 28px;
-	background: url(images/ltblue-dot.png) no-repeat left 3px;
+	background: url(images/ltblue-dot.png) no-repeat left 7px;
 	padding-left: 30px;
+	padding-top: 5px;
+	padding-bottom: 5px;
 }
 
 .name06 {
 	font-family: "Comic Sans MS", cursive, sans-serif;
-	margin-top: 0;
 	margin-left: 2px;
 	font-weight: normal;
 	font-size: 18px;
-	color: #66665E;
+	color: #84D155;
 	text-align: justify;
 	height: 28px;
-	background: url(images/blue-dot.png) no-repeat left 3px;
+	background: url(images/blue-dot.png) no-repeat left 7px;
 	padding-left: 30px;
+	padding-top: 5px;
+	padding-bottom: 5px;
 }
 
 .name07 {
 	font-family: "Comic Sans MS", cursive, sans-serif;
-	margin-top: 0;
 	margin-left: 2px;
 	font-weight: normal;
 	font-size: 18px;
-	color: #66665E;
+	color: #84D155;
 	text-align: justify;
 	height: 28px;
-	background: url(images/purple-dot.png) no-repeat left 3px;
+	background: url(images/purple-dot.png) no-repeat left 7px;
 	padding-left: 30px;
+	padding-top: 5px;
+	padding-bottom: 5px;
 }
 
 .name08 {
 	font-family: "Comic Sans MS", cursive, sans-serif;
-	margin-top: 0;
 	margin-left: 2px;
 	font-weight: normal;
 	font-size: 18px;
-	color: #66665E;
+	color: #84D155;
 	text-align: justify;
 	height: 28px;
-	background: url(images/pink-dot.png) no-repeat left 3px;
+	background: url(images/pink-dot.png) no-repeat left 7px;
 	padding-left: 30px;
+	padding-top: 5px;
+	padding-bottom: 5px;
 }
 
 /* Footer */
 
 #footer {
-	margin-top: 50px;
-	width: 920px;
-	height: 100px;
+	width: 90%;
+	min-height: 100px;
 	margin: 0 auto;
 	padding: 0;
 }
