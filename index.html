@@ -13,10 +13,9 @@
 	<!-- end #header -->
 	<!-- end #header-wrapper -->
 	<div id="logo">
-		<h1><a href=" ">Yelp Map</a ></h1>
+		<h1><a href=" ">TD Search Engine</a ></h1>
 	</div>
 	<div id="page">
-	<div id="page-bgtop">
 		<div id='id01'><input type="text" id="input1" placeholder="Username"></div>
 		<div id='id02'><input type="password" id="input2" placeholder="Password"></div>
 		<div id='id03'><button id="signup" onClick="signUp()">sign up</button></div>
@@ -73,8 +72,16 @@
 				$("#place06 .name06").hide();
 				$("#place07 .name07").hide();
 				$("#place08 .name08").hide();
+				$("#place01 .categories").hide();
+				$("#place02 .categories").hide();
+				$("#place03 .categories").hide();
+				$("#place04 .categories").hide();
+				$("#place05 .categories").hide();
+				$("#place06 .categories").hide();
+				$("#place07 .categories").hide();
+				$("#place08 .categories").hide();
 				$("#id05").hide();
-				$("#map-google").hide;
+				$("#map-google").hide();
 			});
 
 			function sleep(numberMillis) { 
@@ -230,14 +237,14 @@
 							$("#place07 .name07").show();
 							$("#place08 .name08").show();
 
-							$("#place01 .categories").hide();
-							$("#place02 .categories").hide();
-							$("#place03 .categories").hide();
-							$("#place04 .categories").hide();
-							$("#place05 .categories").hide();
-							$("#place06 .categories").hide();
-							$("#place07 .categories").hide();
-							$("#place08 .categories").hide();
+							// $("#place01 .categories").hide();
+							// $("#place02 .categories").hide();
+							// $("#place03 .categories").hide();
+							// $("#place04 .categories").hide();
+							// $("#place05 .categories").hide();
+							// $("#place06 .categories").hide();
+							// $("#place07 .categories").hide();
+							// $("#place08 .categories").hide();
 							 
 
 							//MAP
@@ -375,8 +382,8 @@
 
 			$("#previous").click(function(){
 				if(functions==3){
-					document.getElementById("id02").innerHTML="Welcome "+userName+"!";
-					document.getElementById("id01").innerHTML='<input id="location" placeholder="input the location">';
+					document.getElementById("id01").innerHTML="Welcome "+userName+"!";
+					document.getElementById("id02").innerHTML='<input id="location" placeholder="input the location">';
 					document.getElementById("id03").innerHTML='<input id="item" placeholder="input the item">';
 					document.getElementById("id04").innerHTML='<button id="searchYelp" onClick="search()">search</button>';
 
@@ -473,7 +480,6 @@
         
         
 		</script>
-		</div>
 		</div>
 	</body>
 </html>
