@@ -15,7 +15,6 @@
 	<div id="logo">
 		<h1><a href=" ">Yelp Map</a ></h1>
 	</div>
-	<hr />
 	<div id="page">
 	<div id="page-bgtop">
 		<div id='id01'><input type="text" id="input1" placeholder="Username"></div>
@@ -57,7 +56,7 @@
 			<div class='categories'></div>
 		</div>
 		<div id="map-google">
-			<div id="map" style="width: 920px; height: 400px;"></div>
+			<div id="map" style="width: 100%; height: 400px;"></div>
 		</div>
 
 		<script>
@@ -75,6 +74,7 @@
 				$("#place07 .name07").hide();
 				$("#place08 .name08").hide();
 				$("#id05").hide();
+				$("#map-google").hide;
 			});
 
 			function sleep(numberMillis) { 
@@ -141,8 +141,8 @@
 						userName = obj.userName;
 						//document.getElementById("id01").innerHTML = obj.status;
 						if(obj.status=="success"){
-							document.getElementById("id02").innerHTML="Welcome "+obj.userName+"!";
-							document.getElementById("id01").innerHTML='<input id="location" placeholder="input the location">';
+							document.getElementById("id01").innerHTML="Welcome "+obj.userName+"!";
+							document.getElementById("id02").innerHTML='<input id="location" placeholder="input the location">';
 							document.getElementById("id03").innerHTML='<input id="item" placeholder="input the item">';
 							document.getElementById("id04").innerHTML='<button id="searchYelp" onClick="search()">search</button>';
 						}
@@ -204,21 +204,21 @@
 						// document.getElementById("id04").innerHTML=null;
 						else{
 							document.getElementById("place01").getElementsByClassName("name01")[0].innerHTML=obj[0].name;
-							document.getElementById("place01").getElementsByClassName("categories")[0].innerHTML=obj[0].categories;
+							document.getElementById("place01").getElementsByClassName("categories")[0].innerHTML="categories: " + obj[0].categories + "<br/>" + "address: " + obj[0].address;
 							document.getElementById("place02").getElementsByClassName("name02")[0].innerHTML=obj[1].name;
-							document.getElementById("place02").getElementsByClassName("categories")[0].innerHTML=obj[1].categories;
+							document.getElementById("place02").getElementsByClassName("categories")[0].innerHTML="categories: " + obj[1].categories + "<br/>" + "address: " + obj[1].address;
 							document.getElementById("place03").getElementsByClassName("name03")[0].innerHTML=obj[2].name;
-							document.getElementById("place03").getElementsByClassName("categories")[0].innerHTML=obj[2].categories;
+							document.getElementById("place03").getElementsByClassName("categories")[0].innerHTML="categories: " + obj[2].categories + "<br/>" + "address: " + obj[2].address;
 							document.getElementById("place04").getElementsByClassName("name04")[0].innerHTML=obj[3].name;
-							document.getElementById("place04").getElementsByClassName("categories")[0].innerHTML=obj[3].categories;
+							document.getElementById("place04").getElementsByClassName("categories")[0].innerHTML="categories: " + obj[3].categories + "<br/>" + "address: " + obj[3].address;
 							document.getElementById("place05").getElementsByClassName("name05")[0].innerHTML=obj[4].name;
-							document.getElementById("place05").getElementsByClassName("categories")[0].innerHTML=obj[4].categories;
+							document.getElementById("place05").getElementsByClassName("categories")[0].innerHTML="categories: " + obj[4].categories + "<br/>" + "address: " + obj[4].address;
 							document.getElementById("place06").getElementsByClassName("name06")[0].innerHTML=obj[5].name;
-							document.getElementById("place06").getElementsByClassName("categories")[0].innerHTML=obj[5].categories;
+							document.getElementById("place06").getElementsByClassName("categories")[0].innerHTML="categories: " + obj[5].categories + "<br/>" + "address: " + obj[5].address;
 							document.getElementById("place07").getElementsByClassName("name07")[0].innerHTML=obj[6].name;
-							document.getElementById("place07").getElementsByClassName("categories")[0].innerHTML=obj[6].categories;
+							document.getElementById("place07").getElementsByClassName("categories")[0].innerHTML="categories: " + obj[6].categories + "<br/>" + "address: " + obj[6].address;
 							document.getElementById("place08").getElementsByClassName("name08")[0].innerHTML=obj[7].name;
-							document.getElementById("place08").getElementsByClassName("categories")[0].innerHTML=obj[7].categories;
+							document.getElementById("place08").getElementsByClassName("categories")[0].innerHTML="categories: " + obj[7].categories + "<br/>" + "address: " + obj[7].address;
 							
 
 							$("#place01 .name01").show();
