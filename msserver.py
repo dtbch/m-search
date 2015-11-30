@@ -215,8 +215,6 @@ class Server:
 
 				result = query_api(input_values.term,input_values.location)
 
-				pprint.pprint(result)
-
 				if result!=None and result!=[]:
 					string = '['
 					for i in range(len(result)):
@@ -229,7 +227,11 @@ class Server:
 								string = string[:-2]
 								string += '"'
 						location = result[i].get('location')
-						address = location.get('address')[0]
+						listAddress = location.get('address')
+						if len(listAddress)>0:
+							address = listAddress[0]
+						else:
+							address = ""
 						coordinate = location.get('coordinate')
 						latitude = coordinate.get('latitude')
 						longitude = coordinate.get('longitude')
