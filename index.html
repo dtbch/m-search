@@ -228,21 +228,21 @@
 							// $("#place08 .categories").show();
 
 							document.getElementById("place01").getElementsByClassName("name01")[0].innerHTML=obj[0].name;
-							document.getElementById("place01").getElementsByClassName("categories")[0].innerHTML="categories: " + obj[0].categories + "<br/>" + "address: " + obj[0].address;
+							document.getElementById("place01").getElementsByClassName("categories")[0].innerHTML="categories: " + obj[0].categories + "<br/>" + "address: " + obj[0].address + "<br/>" + "phonenumber: " + obj[0].phonenumber;
 							document.getElementById("place02").getElementsByClassName("name02")[0].innerHTML=obj[1].name;
-							document.getElementById("place02").getElementsByClassName("categories")[0].innerHTML="categories: " + obj[1].categories + "<br/>" + "address: " + obj[1].address;
+							document.getElementById("place02").getElementsByClassName("categories")[0].innerHTML="categories: " + obj[1].categories + "<br/>" + "address: " + obj[1].address + "<br/>" + "phonenumber: " + obj[1].phonenumber;
 							document.getElementById("place03").getElementsByClassName("name03")[0].innerHTML=obj[2].name;
-							document.getElementById("place03").getElementsByClassName("categories")[0].innerHTML="categories: " + obj[2].categories + "<br/>" + "address: " + obj[2].address;
+							document.getElementById("place03").getElementsByClassName("categories")[0].innerHTML="categories: " + obj[2].categories + "<br/>" + "address: " + obj[2].address + "<br/>" + "phonenumber: " + obj[2].phonenumber;
 							document.getElementById("place04").getElementsByClassName("name04")[0].innerHTML=obj[3].name;
-							document.getElementById("place04").getElementsByClassName("categories")[0].innerHTML="categories: " + obj[3].categories + "<br/>" + "address: " + obj[3].address;
+							document.getElementById("place04").getElementsByClassName("categories")[0].innerHTML="categories: " + obj[3].categories + "<br/>" + "address: " + obj[3].address + "<br/>" + "phonenumber: " + obj[3].phonenumber;
 							document.getElementById("place05").getElementsByClassName("name05")[0].innerHTML=obj[4].name;
-							document.getElementById("place05").getElementsByClassName("categories")[0].innerHTML="categories: " + obj[4].categories + "<br/>" + "address: " + obj[4].address;
+							document.getElementById("place05").getElementsByClassName("categories")[0].innerHTML="categories: " + obj[4].categories + "<br/>" + "address: " + obj[4].address + "<br/>" + "phonenumber: " + obj[4].phonenumber;
 							document.getElementById("place06").getElementsByClassName("name06")[0].innerHTML=obj[5].name;
-							document.getElementById("place06").getElementsByClassName("categories")[0].innerHTML="categories: " + obj[5].categories + "<br/>" + "address: " + obj[5].address;
+							document.getElementById("place06").getElementsByClassName("categories")[0].innerHTML="categories: " + obj[5].categories + "<br/>" + "address: " + obj[5].address + "<br/>" + "phonenumber: " + obj[5].phonenumber;
 							document.getElementById("place07").getElementsByClassName("name07")[0].innerHTML=obj[6].name;
-							document.getElementById("place07").getElementsByClassName("categories")[0].innerHTML="categories: " + obj[6].categories + "<br/>" + "address: " + obj[6].address;
+							document.getElementById("place07").getElementsByClassName("categories")[0].innerHTML="categories: " + obj[6].categories + "<br/>" + "address: " + obj[6].address + "<br/>" + "phonenumber: " + obj[6].phonenumber;
 							document.getElementById("place08").getElementsByClassName("name08")[0].innerHTML=obj[7].name;
-							document.getElementById("place08").getElementsByClassName("categories")[0].innerHTML="categories: " + obj[7].categories + "<br/>" + "address: " + obj[7].address;
+							document.getElementById("place08").getElementsByClassName("categories")[0].innerHTML="categories: " + obj[7].categories + "<br/>" + "address: " + obj[7].address + "<br/>" + "phonenumber: " + obj[7].phonenumber;
 							
 
 							$("#place01 .name01").show();
@@ -268,14 +268,14 @@
 
 							$("#map-google").show();
 							var locations = [
-						      ['<h4>'+ obj[0].name + '</h4>', obj[0].latitude, obj[0].longitude],
-						      ['<h4>'+ obj[1].name + '</h4>', obj[1].latitude, obj[1].longitude],
-						      ['<h4>'+ obj[2].name + '</h4>', obj[2].latitude, obj[2].longitude],
-						      ['<h4>'+ obj[3].name + '</h4>', obj[3].latitude, obj[3].longitude],
-						      ['<h4>'+ obj[4].name + '</h4>', obj[4].latitude, obj[4].longitude],
-						      ['<h4>'+ obj[5].name + '</h4>', obj[5].latitude, obj[5].longitude],
-						      ['<h4>'+ obj[6].name + '</h4>', obj[6].latitude, obj[6].longitude],
-						      ['<h4>'+ obj[7].name + '</h4>', obj[7].latitude, obj[7].longitude]
+						      ['<h4>'+ obj[0].name + '<br/>' + obj[0].address + '</h4>', obj[0].latitude, obj[0].longitude],
+						      ['<h4>'+ obj[1].name + '<br/>' + obj[1].address + '</h4>', obj[1].latitude, obj[1].longitude],
+						      ['<h4>'+ obj[2].name + '<br/>' + obj[2].address + '</h4>', obj[2].latitude, obj[2].longitude],
+						      ['<h4>'+ obj[3].name + '<br/>' + obj[3].address + '</h4>', obj[3].latitude, obj[3].longitude],
+						      ['<h4>'+ obj[4].name + '<br/>' + obj[4].address + '</h4>', obj[4].latitude, obj[4].longitude],
+						      ['<h4>'+ obj[5].name + '<br/>' + obj[5].address + '</h4>', obj[5].latitude, obj[5].longitude],
+						      ['<h4>'+ obj[6].name + '<br/>' + obj[6].address + '</h4>', obj[6].latitude, obj[6].longitude],
+						      ['<h4>'+ obj[7].name + '<br/>' + obj[7].address + '</h4>', obj[7].latitude, obj[7].longitude]
 						      //['<h4>'+ obj[8].name + '</h4>', obj[8].latitude, obj[8].longitude],
 						      //['<h4>'+ obj[9].name + '</h4>', obj[9].latitude, obj[9].longitude]
 						    ];
