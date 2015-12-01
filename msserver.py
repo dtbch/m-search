@@ -27,17 +27,30 @@ CONSUMER_SECRET = 'iEeQSreY1LzdAVcWwIaC4kF7MrI'
 TOKEN = 'AY119OXUsggGnJZEIzXet8ODOOoTZ2sL'
 TOKEN_SECRET = 'wvkIJFlGr1VbFBaN1vBtFmTgPJM'
 
+server_type = 0
 
 class Server:
 
-	def __init__(self,port = 8180):
-		self.host = '127.0.0.1'
-		self.databaseHost ='localhost'
+	
+
+	def __init__(self,port = 7002):		
+
+		if server_type==0:		
+			self.host = '128.122.238.51'			
+			self.databaseHost = 'websys3.stern.nyu.edu'
+			self.user = 'websysF15GB2'
+			self.password = 'websysF15GB2!!'
+			self.database = "websysF15GB2"
+
+		else:
+			self.host = '127.0.0.1'
+			self.databaseHost ='localhost'		
+			self.user = 'root'
+			self.password = '111314'
+			self.database = 'mobile'
+
 		self.port = port
 		self.databasePort = 3306
-		self.user = 'root'
-		self.password = '111314'
-		self.database = 'mobile'
 		self.www_dir = 'www'
 
 	def activate_server(self):
@@ -215,23 +228,38 @@ class Server:
 
 				result = query_api(input_values.term,input_values.location)
 
+				pprint.pprint(result)
+
 				if result!=None and result!=[]:
 					string = '['
 					for i in range(len(result)):
 						categories = result[i].get('categories')
-						length = len(categories)
-						string += '{"categories":"'
-						for j in range(length):
-							string += categories[j][0] + ", "
-							if j==length-1:
-								string = string[:-2]
-								string += '"'
+						if categories == None:
+							string += '{"categories":" "'
+						else:
+							length = len(categories)
+							string += '{"categories":"'
+							for j in range(length):
+								string += categories[j][0] + ", "
+								if j==length-1:
+									string = string[:-2]
+									string += '"'
 						location = result[i].get('location')
+
 						listAddress = location.get('address')
 						if len(listAddress)>0:
 							address = listAddress[0]
 						else:
 							address = ""
+
+						phonenumber = result[i].get('display_phone')
+						if phonenumber!=None:
+							if len(phonenumber)>0:
+								phonenumber = phonenumber
+							else:
+								phonenumber = ""
+						else:
+							phonenumber = ""
 						coordinate = location.get('coordinate')
 						latitude = coordinate.get('latitude')
 						longitude = coordinate.get('longitude')
@@ -239,7 +267,7 @@ class Server:
 						latitude = str(latitude)
 						longitude = str(longitude)
 						name = str(name)
-						string += ',"name":"' + name +'", "address":"' + address + '", "latitude":"'+ latitude + '", "longitude":"' + longitude + '"},'
+						string += ',"name":"' + name +'", "address":"' + address + '", "phonenumber":"' + phonenumber + '", "latitude":"'+ latitude + '", "longitude":"' + longitude + '"},'
 						if(i==len(result)-1):
 							string = string[:-1]
 							string += ']'
@@ -251,6 +279,7 @@ class Server:
 				message = bytes(string, 'UTF-8')
 				server_response += message
 				conn.send(server_response)
+				print (string)
 				print ("Closing connection with client")
 				conn.close()
 
