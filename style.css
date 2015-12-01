@@ -23,7 +23,7 @@ body {
 	min-height: 100px;
 	padding-top: 1%;
 	text-align: center;
-	background: #84D155 url(images/img08.jpg) no-repeat center bottom;
+	background: #84D155 url(images/logo.jpg) no-repeat center bottom;
 }
 
 #logo h1 {
@@ -141,6 +141,7 @@ body {
 /* Catagory */
 
 .categories {
+	font-family: Arial, Helvetica, sans-serif;
 	width: 100%;
 	margin-top: 0;
 	text-align: justify;
@@ -159,7 +160,7 @@ body {
 	font-size: 18px;
 	color: #84D155;
 	text-align: justify;
-	height: 28px;
+	min-height: 28px;
 	background: url(images/red-dot.png) no-repeat left 7px;
 	padding-left: 30px;
 	padding-top: 5px;
@@ -173,7 +174,7 @@ body {
 	font-size: 18px;
 	color: #84D155;
 	text-align: justify;
-	height: 28px;
+	min-height: 28px;
 	background: url(images/orange-dot.png) no-repeat left 7px;
 	padding-left: 30px;
 	padding-top: 5px;
@@ -187,7 +188,7 @@ body {
 	font-size: 18px;
 	color: #84D155;
 	text-align: justify;
-	height: 28px;
+	min-height: 28px;
 	background: url(images/yellow-dot.png) no-repeat left 7px;
 	padding-left: 30px;
 	padding-top: 5px;
@@ -201,7 +202,7 @@ body {
 	font-size: 18px;
 	color: #84D155;
 	text-align: justify;
-	height: 28px;
+	min-height: 28px;
 	background: url(images/green-dot.png) no-repeat left 7px;
 	padding-left: 30px;
 	padding-top: 5px;
@@ -215,7 +216,7 @@ body {
 	font-size: 18px;
 	color: #84D155;
 	text-align: justify;
-	height: 28px;
+	min-height: 28px;
 	background: url(images/ltblue-dot.png) no-repeat left 7px;
 	padding-left: 30px;
 	padding-top: 5px;
@@ -229,7 +230,7 @@ body {
 	font-size: 18px;
 	color: #84D155;
 	text-align: justify;
-	height: 28px;
+	min-height: 28px;
 	background: url(images/blue-dot.png) no-repeat left 7px;
 	padding-left: 30px;
 	padding-top: 5px;
@@ -243,7 +244,7 @@ body {
 	font-size: 18px;
 	color: #84D155;
 	text-align: justify;
-	height: 28px;
+	min-height: 28px;
 	background: url(images/purple-dot.png) no-repeat left 7px;
 	padding-left: 30px;
 	padding-top: 5px;
@@ -257,7 +258,7 @@ body {
 	font-size: 18px;
 	color: #84D155;
 	text-align: justify;
-	height: 28px;
+	min-height: 28px;
 	background: url(images/pink-dot.png) no-repeat left 7px;
 	padding-left: 30px;
 	padding-top: 5px;
