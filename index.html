@@ -154,12 +154,12 @@
 							document.getElementById("id02").innerHTML='<input id="location" placeholder="Input the Location">';
 							document.getElementById("id03").innerHTML='<input id="item" placeholder="Input the Item">';
 							document.getElementById("id04").innerHTML='<button id="searchYelp">search</button>';
-							
+
 							$(document).ready(function(){
 								$("#searchYelp").click(function(){
-								var location = document.getElementById("location").value;
-								var item = document.getElementById("item").value;
-								search(location, item);
+									var location = document.getElementById("location").value;
+									var item = document.getElementById("item").value;
+									search(location, item);
 								});
 							});
 							
@@ -210,7 +210,7 @@
 								location = location.replace(/%20/gi," ");
 								item = item.replace(/%20/gi," ");
 
-								historyResult += '<div style="font-size:10px" onClick="search('+location+','+item+')">"Location: '+location+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+" Item: "+item+"</div><br/>";
+								historyResult += '<p onClick="search('+location+','+item+')">Location: '+location+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+" Item: "+item+"</p><br/>";
 							}
 							document.getElementById("id07").innerHTML=historyResult;
 							$("#id07").show();
@@ -253,9 +253,10 @@
 
 						if(length<8){
 							document.getElementById("id01").innerHTML = "No result! Please check your location or item!";
-							document.getElementById("id02").innerHTML = null;
-							document.getElementById("id03").innerHTML = null;
-							document.getElementById("id04").innerHTML = null;
+							$("#id02").hide();
+							$("#id03").hide();
+							$("#id04").hide();
+
 						}
 						
 						 
@@ -454,10 +455,26 @@
 
 			$("#previous").click(function(){
 				if(functions==3){
+
+					$("#id02").show();
+					$("#id03").show();
+					$("#id04").show();
+
 					document.getElementById("id01").innerHTML="Welcome "+userName+"!";
 					document.getElementById("id02").innerHTML='<input id="location" placeholder="input the location">';
 					document.getElementById("id03").innerHTML='<input id="item" placeholder="input the item">';
-					document.getElementById("id04").innerHTML='<button id="searchYelp" onClick="search()">search</button>';
+					document.getElementById("id04").innerHTML='<button id="searchYelp">search</button>';
+
+					$(document).ready(function(){
+						$("#searchYelp").click(function(){
+							var location = document.getElementById("location").value;
+							var item = document.getElementById("item").value;
+							search(location, item);
+						});
+					});
+
+					
+					
 
 					$("#place01 .name01").hide();
 					$("#place02 .name02").hide();
@@ -486,6 +503,9 @@
 				}
 
 				else if(functions==2){
+					$("#id02").show();
+					$("#id03").show();
+					$("#id04").show();
 					document.getElementById("id01").innerHTML='<input type="text" id="input1" placeholder="Username">';
 					document.getElementById("id02").innerHTML='<input type="password" id="input2" placeholder="Password">';
 					document.getElementById("id03").innerHTML='<button id="signup" onClick="signUp()">sign up</button>';
@@ -508,6 +528,16 @@
 			
 			});
 
+
+			
+			$(document).ready(function(){
+				$("#searchYelp").click(function(){
+					var location = document.getElementById("location").value;
+					var item = document.getElementById("item").value;
+					search(location, item);
+				});
+			});
+			
 
 
 			

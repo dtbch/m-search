@@ -35,7 +35,7 @@ var app = {
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
 
-        var ref = window.open('http://192.168.1.4:7002', '_blank', 'location=yes');
+        var ref = window.open('http://128.122.238.51:8000', '_blank', 'location=yes');
 
         ref.addEventListener('loadstart', function(event) { alert('start: ' + event.url); });
         ref.addEventListener('loadstop', function(event) { alert('stop: ' + event.url); });
