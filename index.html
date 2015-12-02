@@ -111,15 +111,15 @@
 						//document.getElementById("id01").innerHTML = obj.status;
 						if(obj.status=="success"){
 							document.getElementById("id01").innerHTML='Welcome '+obj.userName+'! Sign up successfully!';
-							document.getElementById("id02").innerHTML=null;
-							document.getElementById("id03").innerHTML=null;
-							document.getElementById("id04").innerHTML=null;
+							$("#id02").hide();
+							$("#id03").hide();
+							$("#id04").hide();
 						}
 						else{
 							document.getElementById("id01").innerHTML="Username Exists!";
-							document.getElementById("id02").innerHTML=null;
-							document.getElementById("id03").innerHTML=null;
-							document.getElementById("id04").innerHTML=null;
+							$("#id02").hide();
+							$("#id03").hide();
+							$("#id04").hide();
 
 							// var x = document.getElementById("place1");
 							// x.getElementsByClassName("name")[0].innerHTML = 'test';
@@ -150,6 +150,9 @@
 						userName = obj.userName;
 						//document.getElementById("id01").innerHTML = obj.status;
 						if(obj.status=="success"){
+							$("#id02").show();
+							$("#id03").show();
+							$("#id04").show();
 							document.getElementById("id01").innerHTML="Welcome "+obj.userName+"!";
 							document.getElementById("id02").innerHTML='<input id="location" placeholder="Input the Location">';
 							document.getElementById("id03").innerHTML='<input id="item" placeholder="Input the Item">';
@@ -162,20 +165,19 @@
 									search(location, item);
 								});
 							});
-							
-
+							$("#id06").show();							
 						}
 						else{
 							document.getElementById("id01").innerHTML="Username or Password incorrect!";
-							document.getElementById("id02").innerHTML=null;
-							document.getElementById("id03").innerHTML=null;
-							document.getElementById("id04").innerHTML=null;
+							$("#id02").hide();
+							$("#id03").hide();
+							$("#id04").hide();
 						}
 
 						$("#id05").show();
 						functions = 2;
 
-						$("#id06").show();
+						
 
 					}
 				}
@@ -193,9 +195,9 @@
 						var length = Object.keys(obj).length;
 						if(length==0){
 							document.getElementById("id01").innerHTML="No histroy record!";
-							document.getElementById("id02").innerHTML=null;
-							document.getElementById("id03").innerHTML=null;
-							document.getElementById("id04").innerHTML=null;
+							$("#id02").hide();
+							$("#id03").hide();
+							$("#id04").hide();
 						}
 						else{
 							var historyResult = "";
@@ -520,6 +522,9 @@
 				}
 
 				else if(functions==1){
+					$("#id02").show();
+					$("#id03").show();
+					$("#id04").show();
 					document.getElementById("id01").innerHTML='<input type="text" id="input1" placeholder="Username">';
 					document.getElementById("id02").innerHTML='<input type="password" id="input2" placeholder="Password">';
 					document.getElementById("id03").innerHTML='<button id="signup" onClick="signUp()">sign up</button>';
