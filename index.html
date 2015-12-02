@@ -19,6 +19,9 @@
 		<div id='id03'><button id="signup" onClick="signUp()">sign up</button></div>
 		<div id='id04'><button id="login" onClick="login()">log in</button></div>
 		<div id='id05'><button id="previous">previous</button></div>
+		<div id='id06'><button id="history" onClick="history()">history</button></div>
+		<div id='id07'></div>
+
 
 		<div id='place01'>
 			<div class='name01'></div>
@@ -79,6 +82,7 @@
 				$("#place07 .categories").hide();
 				$("#place08 .categories").hide();
 				$("#id05").hide();
+				$("#id06").hide();
 				$("#map-google").hide();
 			});
 
@@ -131,7 +135,7 @@
 
 			function login(){
 				var xhttp = new XMLHttpRequest();
-				var ID = document.getElementById("input1").value;
+				ID = document.getElementById("input1").value;
 				var password = document.getElementById("input2").value;
 
 				document.getElementById("id03").innerHTML = "ID: " + ID;
@@ -141,15 +145,25 @@
 
 				xhttp.onreadystatechange = function(){
 					if (xhttp.readyState==4&&xhttp.status==200){						
-						text = xhttp.responseText;						
-						obj = JSON.parse(text);
+						var text = xhttp.responseText;						
+						var obj = JSON.parse(text);
 						userName = obj.userName;
 						//document.getElementById("id01").innerHTML = obj.status;
 						if(obj.status=="success"){
 							document.getElementById("id01").innerHTML="Welcome "+obj.userName+"!";
-							document.getElementById("id02").innerHTML='<input id="location" placeholder="input the location">';
-							document.getElementById("id03").innerHTML='<input id="item" placeholder="input the item">';
-							document.getElementById("id04").innerHTML='<button id="searchYelp" onClick="search()">search</button>';
+							document.getElementById("id02").innerHTML='<input id="location" placeholder="Input the Location">';
+							document.getElementById("id03").innerHTML='<input id="item" placeholder="Input the Item">';
+							document.getElementById("id04").innerHTML='<button id="searchYelp">search</button>';
+
+							$(document).ready(function(){
+								$("#searchYelp").click(function(){
+									var location = document.getElementById("location").value;
+									var item = document.getElementById("item").value;
+									search(location, item);
+								});
+							});
+							
+
 						}
 						else{
 							document.getElementById("id01").innerHTML="Username or Password incorrect!";
@@ -161,15 +175,56 @@
 						$("#id05").show();
 						functions = 2;
 
+						$("#id06").show();
+
 					}
 				}
 				xhttp.send(null);
 
 			}
 
-			function search(){
-				var location  = document.getElementById("location").value;
-				var item = document.getElementById("item").value;
+			function history(){
+				var xhttp = new XMLHttpRequest();
+				xhttp.open("HISTORY","nothing",true);
+				xhttp.onreadystatechange = function(){
+					if (xhttp.readyState==4&&xhttp.status==200){
+						var text = xhttp.responseText;
+						var obj = JSON.parse(text);
+						var length = Object.keys(obj).length;
+						if(length==0){
+							document.getElementById("id01").innerHTML="No histroy record!";
+							document.getElementById("id02").innerHTML=null;
+							document.getElementById("id03").innerHTML=null;
+							document.getElementById("id04").innerHTML=null;
+						}
+						else{
+							var historyResult = "";
+							var i = 0;
+							for(i=0; i<length; i++){
+								var location = JSON.stringify(obj[i].location);
+								 
+								var item = JSON.stringify(obj[i].item);
+
+								location = location.replace(/"/gi, "\'");
+								item = item.replace(/"/gi, "\'");
+								location = location.replace(/%20/gi," ");
+								item = item.replace(/%20/gi," ");
+
+								historyResult += '<p onClick="search('+location+','+item+')">Location: '+location+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+" Item: "+item+"</p><br/>";
+							}
+							document.getElementById("id07").innerHTML=historyResult;
+							$("#id07").show();
+							functions = 3;
+						}
+					}
+				}
+				xhttp.send(null);
+			}
+
+			function search(location,item){
+
+				$("#id07").hide();
+				$("#id06").hide();
 
 				var xhttp = new XMLHttpRequest();
 				
@@ -189,7 +244,7 @@
 						// document.getElementById("id01").innerHTML=text;
 
 						
-						obj = JSON.parse(text);
+						var obj = JSON.parse(text);
 
 
 						var length = Object.keys(obj).length;
@@ -198,9 +253,10 @@
 
 						if(length<8){
 							document.getElementById("id01").innerHTML = "No result! Please check your location or item!";
-							document.getElementById("id02").innerHTML = null;
-							document.getElementById("id03").innerHTML = null;
-							document.getElementById("id04").innerHTML = null;
+							$("#id02").hide();
+							$("#id03").hide();
+							$("#id04").hide();
+
 						}
 						
 						 
@@ -228,21 +284,21 @@
 							// $("#place08 .categories").show();
 
 							document.getElementById("place01").getElementsByClassName("name01")[0].innerHTML=obj[0].name;
-							document.getElementById("place01").getElementsByClassName("categories")[0].innerHTML="categories: " + obj[0].categories + "<br/>" + "address: " + obj[0].address + "<br/>" + "phonenumber: " + obj[0].phonenumber;
+							document.getElementById("place01").getElementsByClassName("categories")[0].innerHTML="Categories: " + obj[0].categories + "<br/>" + "Address: " + obj[0].address + "<br/>" + "Phone Number: " + obj[0].phonenumber;
 							document.getElementById("place02").getElementsByClassName("name02")[0].innerHTML=obj[1].name;
-							document.getElementById("place02").getElementsByClassName("categories")[0].innerHTML="categories: " + obj[1].categories + "<br/>" + "address: " + obj[1].address + "<br/>" + "phonenumber: " + obj[1].phonenumber;
+							document.getElementById("place02").getElementsByClassName("categories")[0].innerHTML="Categories: " + obj[1].categories + "<br/>" + "Address: " + obj[1].address + "<br/>" + "Phone Number: " + obj[1].phonenumber;
 							document.getElementById("place03").getElementsByClassName("name03")[0].innerHTML=obj[2].name;
-							document.getElementById("place03").getElementsByClassName("categories")[0].innerHTML="categories: " + obj[2].categories + "<br/>" + "address: " + obj[2].address + "<br/>" + "phonenumber: " + obj[2].phonenumber;
+							document.getElementById("place03").getElementsByClassName("categories")[0].innerHTML="Categories: " + obj[2].categories + "<br/>" + "Address: " + obj[2].address + "<br/>" + "Phone Number: " + obj[2].phonenumber;
 							document.getElementById("place04").getElementsByClassName("name04")[0].innerHTML=obj[3].name;
-							document.getElementById("place04").getElementsByClassName("categories")[0].innerHTML="categories: " + obj[3].categories + "<br/>" + "address: " + obj[3].address + "<br/>" + "phonenumber: " + obj[3].phonenumber;
+							document.getElementById("place04").getElementsByClassName("categories")[0].innerHTML="Categories: " + obj[3].categories + "<br/>" + "Address: " + obj[3].address + "<br/>" + "Phone Number: " + obj[3].phonenumber;
 							document.getElementById("place05").getElementsByClassName("name05")[0].innerHTML=obj[4].name;
-							document.getElementById("place05").getElementsByClassName("categories")[0].innerHTML="categories: " + obj[4].categories + "<br/>" + "address: " + obj[4].address + "<br/>" + "phonenumber: " + obj[4].phonenumber;
+							document.getElementById("place05").getElementsByClassName("categories")[0].innerHTML="Categories: " + obj[4].categories + "<br/>" + "Address: " + obj[4].address + "<br/>" + "Phone Number: " + obj[4].phonenumber;
 							document.getElementById("place06").getElementsByClassName("name06")[0].innerHTML=obj[5].name;
-							document.getElementById("place06").getElementsByClassName("categories")[0].innerHTML="categories: " + obj[5].categories + "<br/>" + "address: " + obj[5].address + "<br/>" + "phonenumber: " + obj[5].phonenumber;
+							document.getElementById("place06").getElementsByClassName("categories")[0].innerHTML="Categories: " + obj[5].categories + "<br/>" + "Address: " + obj[5].address + "<br/>" + "Phone Number: " + obj[5].phonenumber;
 							document.getElementById("place07").getElementsByClassName("name07")[0].innerHTML=obj[6].name;
-							document.getElementById("place07").getElementsByClassName("categories")[0].innerHTML="categories: " + obj[6].categories + "<br/>" + "address: " + obj[6].address + "<br/>" + "phonenumber: " + obj[6].phonenumber;
+							document.getElementById("place07").getElementsByClassName("categories")[0].innerHTML="Categories: " + obj[6].categories + "<br/>" + "Address: " + obj[6].address + "<br/>" + "Phone Number: " + obj[6].phonenumber;
 							document.getElementById("place08").getElementsByClassName("name08")[0].innerHTML=obj[7].name;
-							document.getElementById("place08").getElementsByClassName("categories")[0].innerHTML="categories: " + obj[7].categories + "<br/>" + "address: " + obj[7].address + "<br/>" + "phonenumber: " + obj[7].phonenumber;
+							document.getElementById("place08").getElementsByClassName("categories")[0].innerHTML="Categories: " + obj[7].categories + "<br/>" + "Address: " + obj[7].address + "<br/>" + "Phone Number: " + obj[7].phonenumber;
 							
 
 							$("#place01 .name01").show();
@@ -399,10 +455,26 @@
 
 			$("#previous").click(function(){
 				if(functions==3){
+
+					$("#id02").show();
+					$("#id03").show();
+					$("#id04").show();
+
 					document.getElementById("id01").innerHTML="Welcome "+userName+"!";
 					document.getElementById("id02").innerHTML='<input id="location" placeholder="input the location">';
 					document.getElementById("id03").innerHTML='<input id="item" placeholder="input the item">';
-					document.getElementById("id04").innerHTML='<button id="searchYelp" onClick="search()">search</button>';
+					document.getElementById("id04").innerHTML='<button id="searchYelp">search</button>';
+
+					$(document).ready(function(){
+						$("#searchYelp").click(function(){
+							var location = document.getElementById("location").value;
+							var item = document.getElementById("item").value;
+							search(location, item);
+						});
+					});
+
+					
+					
 
 					$("#place01 .name01").hide();
 					$("#place02 .name02").hide();
@@ -424,16 +496,23 @@
 
 					
 					$("#map-google").hide();	
+					$("#id06").show();
+					$("#id07").show();
 
 					functions = 2;
 				}
 
 				else if(functions==2){
+					$("#id02").show();
+					$("#id03").show();
+					$("#id04").show();
 					document.getElementById("id01").innerHTML='<input type="text" id="input1" placeholder="Username">';
 					document.getElementById("id02").innerHTML='<input type="password" id="input2" placeholder="Password">';
 					document.getElementById("id03").innerHTML='<button id="signup" onClick="signUp()">sign up</button>';
 					document.getElementById("id04").innerHTML='<button id="login" onClick="login()">log in</button>';
 					$("#id05").hide();
+					$("#id06").hide();
+					$("#id07").hide();
 					functions = 0;
 				}
 
@@ -443,11 +522,22 @@
 					document.getElementById("id03").innerHTML='<button id="signup" onClick="signUp()">sign up</button>';
 					document.getElementById("id04").innerHTML='<button id="login" onClick="login()">log in</button>';
 					$("#id05").hide();
+					$("#id06").hide();
 					functions = 0;
 				}
 			
 			});
 
+
+			
+			$(document).ready(function(){
+				$("#searchYelp").click(function(){
+					var location = document.getElementById("location").value;
+					var item = document.getElementById("item").value;
+					search(location, item);
+				});
+			});
+			
 
 
 			
