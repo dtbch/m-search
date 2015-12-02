@@ -6,6 +6,13 @@ body {
 	padding: 0;
 }
 
+p {
+	color: #888888;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	margin: 0 auto;
+}
+
 /* PAGE */
 
 #page {
@@ -39,27 +46,30 @@ body {
 
 /* Login */
 
-#id01, #id02, #id03, #id04, #id05 {
+#id01, #id02, #id03, #id04, #id05, #id06, #id07 {
 	float: left;
 	min-height: 25px;
 	padding-left: 4px;
-	text-align: center;
 	width: 95%;
 }
 
 #id01{
 	color: #000000;	
 	font-size: 14px;
+	text-align: center;
 	text-transform: uppercase;
 	
 }
 
-#id02, #id03, #id04, #id05 {
+#id02, #id03, #id04, #id05, #id06 {
 	padding-top: 15px;
+	text-align: center;
 }
 
-#id05 {
+#id07 {
 	padding-bottom: 25px;
+	padding-top: 30px;
+	width: 85%;
 }
 
 #input1, #input2, #location, #item {
@@ -72,7 +82,7 @@ body {
 	width: 98%;
 }
 
-#login, #signup, #searchYelp, #previous {
+#login, #signup, #searchYelp, #previous, #history {
 	border: none;
 	color: transparent;
 	min-height: 26px;
@@ -87,7 +97,7 @@ body {
 	background: url(images/signin.png) no-repeat center top;
 }
 
-#searchYelp, #previous {
+#searchYelp, #previous, #history {
 	min-width: 126px;
 }
 
@@ -95,7 +105,12 @@ body {
 	background: url(images/search.png) no-repeat center top;
 }
 
-#previous  {
+#previous {
+	background: url(images/previous.png) no-repeat center top;
+}
+
+#history {
+	/* Need to be updated */
 	background: url(images/previous.png) no-repeat center top;
 }
 
@@ -104,6 +119,10 @@ body {
 #place01, #place02, #place03, #place04, #place05, #place06, #place07, #place08, #map-google {
 	float: left;
 	width: 100%;
+}
+
+#place01 {
+	padding-top: 30px;
 }
 
 #map-google {
@@ -122,6 +141,14 @@ body {
 	padding-left: 30px;
 	padding-right: 30px;
 	text-align: left;
+}
+
+.alignleft {
+	float: left;
+}
+
+.alignright {
+	float: right;
 }
 
 /* Name */
@@ -181,7 +208,7 @@ body {
 	margin: 0 auto;
 	min-height: 100px;
 	overflow: auto;
-	padding-top: 15%;
+	padding-top: 10%;
 	text-align: center;
 	width: 100%;
 }
