@@ -211,6 +211,9 @@
 								item = item.replace(/%20/gi," ");
 
 								historyResult += '<div style="width:100%; min-height:30px" onClick="search('+location+','+item+')"><p class="alignleft" >Location: '+location+ '</p><p class="alignright">'+" Item: "+item+"</p></div>";
+								if(i>=9){
+									break;
+								}
 							}
 							document.getElementById("id07").innerHTML=historyResult;
 							$("#id07").show();
