@@ -8,6 +8,8 @@
 
     <name>TD Search Engine</name>
 
+    <icon src="icon.png"></icon>
+
     <description>
         TD's Mobile App for Search Engine
     </description>
