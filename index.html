@@ -115,6 +115,12 @@
 							$("#id03").hide();
 							$("#id04").hide();
 						}
+						else if(obj.status=="none"){
+							document.getElementById("id01").innerHTML="Username and Password can not be None!";
+							$("#id02").hide();
+							$("#id03").hide();
+							$("#id04").hide();
+						}
 						else{
 							document.getElementById("id01").innerHTML="Username Exists!";
 							$("#id02").hide();
