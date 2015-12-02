@@ -153,7 +153,7 @@ class Server:
 
 				conndb = pymysql.connect(host=self.databaseHost, port=self.databasePort, user=self.user, passwd=self.password, db=self.database)
 				cur = conndb.cursor()
-				cur.execute("select * from client where id=%s and password=%s", (username,password))
+				cur.execute("select * from client where id=%s", (username))
 				data = cur.fetchall()
 				print("data: ", data)
 
