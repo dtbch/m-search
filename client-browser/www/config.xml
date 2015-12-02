@@ -6,10 +6,10 @@
         id        = "com.kangran.tao"
         version   = "1.0.13">
 
-    <name>TD Search Engine APP</name>
+    <name>TD Search Engine</name>
 
     <description>
-        TD's Mobile APP for Search Engine
+        TD's Mobile App for Search Engine
     </description>
 
     <author href="http://nyu.edu" email="td1124@nyu.edu">
