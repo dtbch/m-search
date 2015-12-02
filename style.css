@@ -83,35 +83,44 @@ p {
 }
 
 #login, #signup, #searchYelp, #previous, #history {
-	border: none;
-	color: transparent;
-	min-height: 26px;
-	min-width: 84px;
+	width: 125px;
+    -webkit-border-radius: 10;
+    -moz-border-radius: 10;
+    border-radius: 10px;
+    text-shadow: 1px 1px 3px #666666;
+    font-family: Arial;
+    color: #ffffff;
+    font-size: 17px;
+    padding: 5px 20px 5px 20px;
+    text-decoration: none;
+    border: none;
 }
 
-#signup {
-	background: url(images/signup.png) no-repeat center top;
+#login, #previous {
+    background: #00AAE0;
+    background-image: -webkit-linear-gradient(top, #00AAE0, #049bc9);
+    background-image: -moz-linear-gradient(top, #00AAE0, #049bc9);
+    background-image: -ms-linear-gradient(top, #00AAE0, #049bc9);
+    background-image: -o-linear-gradient(top, #00AAE0, #049bc9);
+    background-image: linear-gradient(to bottom, #00AAE0, #049bc9);
 }
 
-#login {
-	background: url(images/signin.png) no-repeat center top;
-}
-
-#searchYelp, #previous, #history {
-	min-width: 126px;
-}
-
-#searchYelp {
-	background: url(images/search.png) no-repeat center top;
-}
-
-#previous {
-	background: url(images/previous.png) no-repeat center top;
+#signup, #searchYelp {
+    background: #21C1ED;
+    background-image: -webkit-linear-gradient(top, #21C1ED, #08a7cf);
+    background-image: -moz-linear-gradient(top, #21C1ED, #08a7cf);
+    background-image: -ms-linear-gradient(top, #21C1ED, #08a7cf);
+    background-image: -o-linear-gradient(top, #21C1ED, #08a7cf);
+    background-image: linear-gradient(to bottom, #21C1ED, #08a7cf);
 }
 
 #history {
-	/* Need to be updated */
-	background: url(images/previous.png) no-repeat center top;
+    background: #0081C0;
+    background-image: -webkit-linear-gradient(top, #0081C0, #006fa3);
+    background-image: -moz-linear-gradient(top, #0081C0, #006fa3);
+    background-image: -ms-linear-gradient(top, #0081C0, #006fa3);
+    background-image: -o-linear-gradient(top, #0081C0, #006fa3);
+    background-image: linear-gradient(to bottom, #0081C0, #006fa3);  
 }
 
 /* Content */
@@ -202,6 +211,7 @@ p {
 
 #footer {
 	color: #666666;
+	float: left;
 	font-family: Georgia, serif;
 	font-size: 12px;
 	line-height: normal;
@@ -210,5 +220,5 @@ p {
 	overflow: auto;
 	padding-top: 10%;
 	text-align: center;
-	width: 100%;
+	width: 99%;
 }
