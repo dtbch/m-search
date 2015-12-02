@@ -151,22 +151,26 @@ class Server:
 				username = file_requested.split('?')[0]
 				password = file_requested.split('?')[1]
 
-				conndb = pymysql.connect(host=self.databaseHost, port=self.databasePort, user=self.user, passwd=self.password, db=self.database)
-				cur = conndb.cursor()
-				cur.execute("select * from client where id=%s", (username))
-				data = cur.fetchall()
-				print("data: ", data)
-
-				if len(data)==0:
-					cur.execute("insert into client (id, password) values(%s,%s)",(username,password))                    
-					message = bytes('{"status":"success","userName":"' + username +'"}','UTF-8')
-
+				if username=="" or password=="":
+					print("none none!")
+					message = bytes('{"status":"none"}','UTF-8')
 				else:
-					message = bytes('{"status":"failure"}','UTF-8')
+					conndb = pymysql.connect(host=self.databaseHost, port=self.databasePort, user=self.user, passwd=self.password, db=self.database)
+					cur = conndb.cursor()
+					cur.execute("select * from client where id=%s", (username))
+					data = cur.fetchall()
+					print("data: ", data)
 
-				cur.close()
-				conndb.commit()
-				conndb.close()
+					if len(data)==0:
+						cur.execute("insert into client (id, password) values(%s,%s)",(username,password))                    
+						message = bytes('{"status":"success","userName":"' + username +'"}','UTF-8')
+
+					else:
+						message = bytes('{"status":"failure"}','UTF-8')
+
+					cur.close()
+					conndb.commit()
+					conndb.close()
 				response_headers = self._gen_headers( 200)
 				server_response = response_headers.encode()
 				server_response += message
@@ -180,24 +184,29 @@ class Server:
 				username = file_requested.split('?')[0]
 				password = file_requested.split('?')[1]
 
-				conndb = pymysql.connect(host=self.databaseHost, port=self.databasePort, user=self.user, passwd=self.password, db=self.database)
-				cur = conndb.cursor()
-				cur.execute("select distinct * from client where id=%s and password=%s", (username,password))
-				data = cur.fetchall()
-				print("data: ", data)
-
-				if (len(data)==0) :                   
+				if username=="" or password=="":
+					print("none none!")
 					message = bytes('{"status":"failure"}','UTF-8')
 
-				elif (data[0][1]!=password) :                   
-					message = bytes('{"status":"failure"}','UTF-8')
+				else:
+					conndb = pymysql.connect(host=self.databaseHost, port=self.databasePort, user=self.user, passwd=self.password, db=self.database)
+					cur = conndb.cursor()
+					cur.execute("select distinct * from client where id=%s and password=%s", (username,password))
+					data = cur.fetchall()
+					print("data: ", data)
 
-				else:					
-					message = bytes('{"status":"success","userName":"' + username +'"}','UTF-8')
+					if (len(data)==0) :                   
+						message = bytes('{"status":"failure"}','UTF-8')
 
-				cur.close()
-				conndb.commit()
-				conndb.close()
+					elif (data[0][1]!=password) :                   
+						message = bytes('{"status":"failure"}','UTF-8')
+
+					else:					
+						message = bytes('{"status":"success","userName":"' + username +'"}','UTF-8')
+
+					cur.close()
+					conndb.commit()
+					conndb.close()
 				response_headers = self._gen_headers( 200)
 				server_response = response_headers.encode()
 				server_response += message
@@ -239,69 +248,73 @@ class Server:
 				location = file_requested.split('?')[0]
 				item = file_requested.split('?')[1]
 
-				
 
-				parser = argparse.ArgumentParser()
+				if username=="" or password=="":
+					print("none none!")
+					string = '{"name":"failure"}'
 
-				parser.add_argument('-q', '--term', dest='term', default=item, type=str, help='Search term (default: %(default)s)')
+				else:
+					parser = argparse.ArgumentParser()
 
-				parser.add_argument('-l', '--location', dest='location', default=location, type=str, help='Search location (default: %(default)s)')
+					parser.add_argument('-q', '--term', dest='term', default=item, type=str, help='Search term (default: %(default)s)')
 
-				input_values = parser.parse_args()
+					parser.add_argument('-l', '--location', dest='location', default=location, type=str, help='Search location (default: %(default)s)')
 
-				result = query_api(input_values.term,input_values.location)
+					input_values = parser.parse_args()
 
-				pprint.pprint(result)
+					result = query_api(input_values.term,input_values.location)
 
-				if result!=None and result!=[]:
-					conndb = pymysql.connect(host=self.databaseHost, port=self.databasePort, user=self.user, passwd=self.password, db=self.database)
-					cur = conndb.cursor()
-					cur.execute("insert incident values(%s,%s,%s,curdate())",(username,location,item))
-					cur.close()
-					conndb.commit()
-					conndb.close()
-					string = '['
-					for i in range(len(result)):
-						categories = result[i].get('categories')
-						if categories == None:
-							string += '{"categories":" "'
-						else:
-							length = len(categories)
-							string += '{"categories":"'
-							for j in range(length):
-								string += categories[j][0] + ", "
-								if j==length-1:
-									string = string[:-2]
-									string += '"'
-						location = result[i].get('location')
+					pprint.pprint(result)
 
-						listAddress = location.get('address')
-						if len(listAddress)>0:
-							address = listAddress[0]
-						else:
-							address = ""
+					if result!=None and result!=[]:
+						conndb = pymysql.connect(host=self.databaseHost, port=self.databasePort, user=self.user, passwd=self.password, db=self.database)
+						cur = conndb.cursor()
+						cur.execute("insert incident values(%s,%s,%s,curdate())",(username,location,item))
+						cur.close()
+						conndb.commit()
+						conndb.close()
+						string = '['
+						for i in range(len(result)):
+							categories = result[i].get('categories')
+							if categories == None:
+								string += '{"categories":" "'
+							else:
+								length = len(categories)
+								string += '{"categories":"'
+								for j in range(length):
+									string += categories[j][0] + ", "
+									if j==length-1:
+										string = string[:-2]
+										string += '"'
+							location = result[i].get('location')
 
-						phonenumber = result[i].get('display_phone')
-						if phonenumber!=None:
-							if len(phonenumber)>0:
-								phonenumber = phonenumber
+							listAddress = location.get('address')
+							if len(listAddress)>0:
+								address = listAddress[0]
+							else:
+								address = ""
+
+							phonenumber = result[i].get('display_phone')
+							if phonenumber!=None:
+								if len(phonenumber)>0:
+									phonenumber = phonenumber
+								else:
+									phonenumber = ""
 							else:
 								phonenumber = ""
-						else:
-							phonenumber = ""
-						coordinate = location.get('coordinate')
-						latitude = coordinate.get('latitude')
-						longitude = coordinate.get('longitude')
-						name = result[i].get('name')
-						latitude = str(latitude)
-						longitude = str(longitude)
-						name = str(name)
-						string += ',"name":"' + name +'", "address":"' + address + '", "phonenumber":"' + phonenumber + '", "latitude":"'+ latitude + '", "longitude":"' + longitude + '"},'
-						if(i==len(result)-1):
-							string = string[:-1]
-							string += ']'
-				else:
-					string = '{"name":"failure"}'
+							coordinate = location.get('coordinate')
+							latitude = coordinate.get('latitude')
+							longitude = coordinate.get('longitude')
+							name = result[i].get('name')
+							latitude = str(latitude)
+							longitude = str(longitude)
+							name = str(name)
+							string += ',"name":"' + name +'", "address":"' + address + '", "phonenumber":"' + phonenumber + '", "latitude":"'+ latitude + '", "longitude":"' + longitude + '"},'
+							if(i==len(result)-1):
+								string = string[:-1]
+								string += ']'
+					else:
+						string = '{"name":"failure"}'
 
 				response_headers = self._gen_headers( 200)
 				server_response = response_headers.encode()
