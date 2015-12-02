@@ -210,7 +210,7 @@
 								location = location.replace(/%20/gi," ");
 								item = item.replace(/%20/gi," ");
 
-								historyResult += '<p onClick="search('+location+','+item+')">Location: '+location+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+" Item: "+item+"</p><br/>";
+								historyResult += '<div style="width:100%; min-height:30px" onClick="search('+location+','+item+')"><p class="alignleft" >Location: '+location+ '</p><p class="alignright">'+" Item: "+item+"</p></div>";
 							}
 							document.getElementById("id07").innerHTML=historyResult;
 							$("#id07").show();
