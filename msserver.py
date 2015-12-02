@@ -33,14 +33,14 @@ class Server:
 
 	
 
-	def __init__(self,port = 7002):		
+	def __init__(self,port = 8000):		
 
 		if server_type==0:		
 			self.host = '128.122.238.51'			
 			self.databaseHost = 'websys3.stern.nyu.edu'
-			self.user = 'websysF15GB2'
-			self.password = 'websysF15GB2!!'
-			self.database = "websysF15GB2"
+			self.user = 'websysF15GB7'
+			self.password = 'websysF15GB7!!'
+			self.database = "websysF15GB7"
 
 		else:
 			self.host = '127.0.0.1'
@@ -63,7 +63,7 @@ class Server:
 			print("Warning: Could not acquite port:", self.port, "\n")
 			print("I will try a higher port")
 			user_port = self.port
-			self.port = 8280
+			self.port = 7007
 
 			try:
 				print("Launching HTTP server on ", self.host, ":", self.port)
@@ -205,18 +205,41 @@ class Server:
 				print ("Closing connection with client")
 				conn.close()
 
+			elif request_method == 'HISTORY':
+				conndb = pymysql.connect(host=self.databaseHost, port=self.databasePort, user=self.user, passwd=self.password, db=self.database)
+				cur = conndb.cursor()
+				cur.execute("select distinct location, item from incident where id=%s", (username))
+				data = cur.fetchall()
+				cur.close()
+				conndb.commit()
+				conndb.close()
+				length = len(data)
+				string = ""
+				if length>0:
+					string += "["
+					for i in range(0,length):
+						string += '{"location":"'+data[i][0]+'", "item":"'+data[i][1]+'"},';
+						if i==length-1:
+							string = string[:-1]
+							string += "]"
+				message = bytes(string, 'UTF-8')
+				response_headers = self._gen_headers( 200)
+				server_response = response_headers.encode()
+				server_response += message
+				conn.send(server_response)
+				print("Closing connection with client")
+				conn.close()
+
+				print(message)
+
+
 			elif (request_method == 'SEARCH'):
 				file_requested = string.split(' ')
 				file_requested = file_requested[1][1:]
 				location = file_requested.split('?')[0]
 				item = file_requested.split('?')[1]
 
-				conndb = pymysql.connect(host=self.databaseHost, port=self.databasePort, user=self.user, passwd=self.password, db=self.database)
-				cur = conndb.cursor()
-				cur.execute("insert incident values(%s,%s,%s,curdate())",(username,location,item))
-				cur.close()
-				conndb.commit()
-				conndb.close()
+				
 
 				parser = argparse.ArgumentParser()
 
@@ -231,6 +254,12 @@ class Server:
 				pprint.pprint(result)
 
 				if result!=None and result!=[]:
+					conndb = pymysql.connect(host=self.databaseHost, port=self.databasePort, user=self.user, passwd=self.password, db=self.database)
+					cur = conndb.cursor()
+					cur.execute("insert incident values(%s,%s,%s,curdate())",(username,location,item))
+					cur.close()
+					conndb.commit()
+					conndb.close()
 					string = '['
 					for i in range(len(result)):
 						categories = result[i].get('categories')
