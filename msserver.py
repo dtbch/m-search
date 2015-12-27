@@ -27,7 +27,7 @@ CONSUMER_SECRET = 'iEeQSreY1LzdAVcWwIaC4kF7MrI'
 TOKEN = 'AY119OXUsggGnJZEIzXet8ODOOoTZ2sL'
 TOKEN_SECRET = 'wvkIJFlGr1VbFBaN1vBtFmTgPJM'
 
-server_type = 0
+server_type = 1
 
 class Server:
 
@@ -70,7 +70,7 @@ class Server:
 				self.socket.bind((self.host, self.port))
 
 			except Exception as e:
-				print("ERROR: Failed to acquire sockets for ports ", user_port, " and 8280")
+				print("ERROR: Failed to acquire sockets for ports ", user_port, " and 7007")
 				print("Try running the Server in a privileged user mode.")
 				self.shutdown()
 				import sys
@@ -121,7 +121,7 @@ class Server:
 				file_requested = file_requested.split('?')[0]
 
 				if(file_requested == ''):
-					file_requested = 'index.html'
+					file_requested = 'home.html'
 				try:
 					file_handler = open(file_requested,'rb')
 					if (request_method == 'GET'):

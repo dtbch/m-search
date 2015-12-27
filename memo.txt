@@ -1,0 +1,9 @@
+run the sever for ever:
+nohup python3 msserver.py&
+
+get the Process ID(PID):
+ps ax | grep python3
+
+kill the process:
+kill -9 PID
+
