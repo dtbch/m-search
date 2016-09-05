@@ -125,7 +125,7 @@ p {
 
 /* Content */
 
-#place01, #place02, #place03, #place04, #place05, #place06, #place07, #place08, #map-google {
+#place00, #place01, #place02, #place03, #place04, #place05, #place06, #place07, #place08, #map-google {
 	float: left;
 	width: 100%;
 }
